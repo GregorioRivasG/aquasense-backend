@@ -1,14 +1,12 @@
+//Conexión con la BD usando la url del .env
 const mongoose = require('mongoose');
 
 const connectDB = async () => {
   try {
-    await mongoose.connect(process.env.MONGODB_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true
-    });
-    console.log('MongoDB Connected...');
+    await mongoose.connect(process.env.MONGODB_URI);
+    console.log('conectado');
   } catch (err) {
-    console.error(err.message);
+    console.error('Error de conexión:', err.message);
     process.exit(1);
   }
 };

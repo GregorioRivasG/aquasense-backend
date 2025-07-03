@@ -1,8 +1,6 @@
 const Measurement = require('../models/Measurement');
 
-// @desc    Create a new measurement
-// @route   POST /api/measurements
-// @access  Public
+//funcion para guardar los datos de los 3 sensores
 exports.createMeasurement = async (req, res) => {
   try {
     const { tankId, temperature, ph, conductivity } = req.body;
@@ -14,23 +12,19 @@ exports.createMeasurement = async (req, res) => {
       conductivity
     });
 
-    const measurement = await newMeasurement.save();
-    res.json(measurement);
+    const savedMeasurement = await newMeasurement.save();
+    res.status(201).json(savedMeasurement);
   } catch (err) {
-    console.error(err.message);
-    res.status(500).send('Server Error');
+    res.status(400).json({ error: err.message });
   }
 };
 
-// @desc    Get all measurements
-// @route   GET /api/measurements
-// @access  Public
+//Ver los datos ordenados
 exports.getMeasurements = async (req, res) => {
   try {
     const measurements = await Measurement.find().sort({ timestamp: -1 });
     res.json(measurements);
   } catch (err) {
-    console.error(err.message);
-    res.status(500).send('Server Error');
+    res.status(500).json({ error: err.message });
   }
 };

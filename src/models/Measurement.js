@@ -10,18 +10,9 @@ const MeasurementSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   },
-  temperature: {
-    type: Number,
-    required: true
-  },
-  ph: {
-    type: Number,
-    required: true
-  },
-  conductivity: {
-    type: Number,
-    required: true
-  }
+  temperature: { type: Number, required: true },
+  ph: { type: Number, required: true },
+  conductivity: { type: Number, required: true }
 });
 
 module.exports = mongoose.model('Measurement', MeasurementSchema);

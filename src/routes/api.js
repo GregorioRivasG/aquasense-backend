@@ -1,11 +1,11 @@
+//Endpoints para los datos de los sensores
+
 const express = require('express');
 const router = express.Router();
 const { 
-  createMeasurement,
-  getMeasurements
+  createMeasurement, 
+  getMeasurements 
 } = require('../controllers/measurements');
-
-// Measurement routes
 router.post('/measurements', createMeasurement);
 router.get('/measurements', getMeasurements);
 
