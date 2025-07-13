@@ -8,7 +8,7 @@ const {
   getTankById,
   updateTank,
   deleteTank
-} = require('../controllers/tanks');
+} = require('../controllers/Tanks');
 
 router.post('/', createTank);
 router.get('/', getTanks);

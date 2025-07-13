@@ -5,8 +5,9 @@ const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
 const connectDB = require('./config/db');
-const userRoutes = require('./src/routes/users');
-const tankRoutes = require('./src/routes/Tanks');
+const userRoutes = require('./routes/users.js');
+const tankRoutes = require('./routes/Tanks.js');
+
 connectDB();
 
 const app = express();
@@ -18,7 +19,8 @@ app.use(morgan('dev'));
 app.use('/api/users', userRoutes);
 app.use('/api/tanks', tankRoutes);
 
-app.use('/api', require('./routes/api'));
+const apiRoutes = require('./routes/api.js');
+app.use('/api', apiRoutes);
 
 app.get('/', (req, res) => {
   res.send('Prueba de API funcionando');
